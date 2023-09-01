@@ -23,6 +23,8 @@ A mini kafka flink demo stack with avro as the serialization format based on htt
 
 # The architecture overview
 The stack consists of a single-node Kafka cluster with KRaft(without ZooKeeper), a schema registry service instance, a Flink Job Manager instance, a Flink Task Manager instance, and a Kafka UI service
+![mini-kafka-flink-stack](https://github.com/zjlhxq/kafka-flink-dev-stack/assets/8728130/b4725412-50bd-4d0e-85d3-f5bc542606fd)
+
 The serialization format used is ‘AVRO’
 
 The use case is to about joining two data streams by productId that come out of Kafka and sending the enriched messages to another Kafka topic 
