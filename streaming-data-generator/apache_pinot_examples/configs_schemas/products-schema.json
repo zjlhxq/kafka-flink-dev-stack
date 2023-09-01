@@ -1,0 +1,59 @@
+{
+    "schemaName": "products",
+    "dimensionFieldSpecs": [
+        {
+            "name": "product_id",
+            "dataType": "STRING"
+        },
+        {
+            "name": "category",
+            "dataType": "STRING"
+        },
+        {
+            "name": "item",
+            "dataType": "STRING"
+        },
+        {
+            "name": "size",
+            "dataType": "STRING"
+        },
+        {
+            "name": "cogs",
+            "dataType": "FLOAT"
+        },
+        {
+            "name": "price",
+            "dataType": "FLOAT"
+        },
+        {
+            "name": "contains_fruit",
+            "dataType": "BOOLEAN"
+        },
+        {
+            "name": "contains_veggies",
+            "dataType": "BOOLEAN"
+        },
+        {
+            "name": "contains_nuts",
+            "dataType": "BOOLEAN"
+        },
+        {
+            "name": "contains_caffeine",
+            "dataType": "BOOLEAN"
+        }
+    ],
+    "metricFieldSpecs": [
+        {
+            "name": "inventory_level",
+            "dataType": "INT"
+        }
+    ],
+    "dateTimeFieldSpecs": [
+        {
+            "name": "event_time",
+            "dataType": "TIMESTAMP",
+            "format": "1:MILLISECONDS:SIMPLE_DATE_FORMAT:yyyy-MM-dd HH:mm:ss.SSSSSS",
+            "granularity": "1:MILLISECONDS"
+        }
+    ]
+}

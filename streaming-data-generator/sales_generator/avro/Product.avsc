@@ -1,0 +1,45 @@
+{
+  "type" : "record",
+  "name" : "Product",
+  "namespace" : "com.siemens.hps",
+  "fields" : [ {
+    "name" : "transactionTime",
+    "type" : "string"
+  }, {
+    "name" : "productId",
+    "type" : "string"
+  }, {
+    "name" : "category",
+    "type" : "string"
+  }, {
+    "name" : "item",
+    "type" : "string"
+  }, {
+    "name" : "size",
+    "type" : "string"
+  }, {
+    "name" : "cogs",
+    "type" : "double"
+  }, {
+    "name" : "price",
+    "type" : "double"
+  }, {
+    "name" : "inventoryLevel",
+    "type" : "int"
+  }, {
+    "name" : "containsFruit",
+    "type" : "boolean"
+  }, {
+    "name" : "containsVeggies",
+    "type" : "boolean"
+  }, {
+    "name" : "containsNuts",
+    "type" : "boolean"
+  }, {
+    "name" : "containsCaffeine",
+    "type" : "boolean"
+  }, {
+    "name" : "propensityToBuy",
+    "type" : "int"
+  } ]
+}

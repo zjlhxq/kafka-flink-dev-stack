@@ -1,0 +1,36 @@
+{
+  "type" : "record",
+  "name" : "Purchase",
+  "namespace" : "com.siemens.hps",
+  "fields" : [ {
+    "name" : "transactionTime",
+    "type" : "string"
+  }, {
+    "name" : "transactionId",
+    "type" : "string"
+  }, {
+    "name" : "productId",
+    "type" : "string"
+  }, {
+    "name" : "price",
+    "type" : "double"
+  }, {
+    "name" : "quantity",
+    "type" : "int"
+  }, {
+    "name" : "isMember",
+    "type" : "boolean"
+  }, {
+    "name" : "memberDiscount",
+    "type" : "double"
+  }, {
+    "name" : "addSupplements",
+    "type" : "boolean"
+  }, {
+    "name" : "supplementPrice",
+    "type" : "double"
+  }, {
+    "name" : "totalPurchase",
+    "type" : "double"
+  } ]
+}

@@ -1,0 +1,75 @@
+version: "3.9"
+services:
+  kafka:
+    image: bitnami/kafka:3.5.1
+    ports:
+      - '9092:9092'
+    environment:
+      # KRaft settings
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka:29093
+      - KAFKA_KRAFT_CLUSTER_ID=z69JshU3NV7uhxln9uNDZg==
+      # Listeners
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://kafka:29092,CONTROLLER://kafka:29093,PLAINTEXT_HOST://0.0.0.0:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_ALLOW_PLAINTEXT_LISTENER=yes
+    networks:
+      - streaming-stack
+  schema-registry:
+    image: bitnami/schema-registry:7.4.1
+    ports:
+      - '8081:8081'
+    depends_on:
+      - kafka
+    environment:
+      - SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081
+      - SCHEMA_REGISTRY_KAFKA_BROKERS=PLAINTEXT://kafka:29092
+    networks:
+      - streaming-stack
+  kafka-ui:
+    image: "provectuslabs/kafka-ui:2a61b97fabe9fb534737d47523d2717a76d624b4"
+    ports:
+      - "9080:8080"
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=streaming-demo
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
+      - KAFKA_CLUSTERS_0_SCHEMAREGISTRY=http://schema-registry:8081
+      - DYNAMIC_CONFIG_ENABLED=true
+    depends_on:
+      - kafka
+      - schema-registry
+    networks:
+      - streaming-stack
+
+  jobmanager:
+    image: "flink:1.16.0"
+    command: jobmanager
+    ports:
+      - "9081:8081"
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+    networks:
+      - streaming-stack
+
+  taskmanager:
+    image: "flink:1.16-scala_2.12-java11"
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 2
+    networks:
+      - streaming-stack
+
+networks:
+  streaming-stack:
+

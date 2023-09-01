@@ -1,0 +1,37 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id "com.github.davidmc24.gradle.plugin.avro" version "1.7.1"
+}
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'org.apache.avro:avro:1.11.2'
+}
+
+import com.github.davidmc24.gradle.plugin.avro.GenerateAvroProtocolTask
+import com.github.davidmc24.gradle.plugin.avro.GenerateAvroSchemaTask
+
+apply plugin: "com.github.davidmc24.gradle.plugin.avro-base"
+
+def generateProtocol = tasks.register("generateProtocol", GenerateAvroProtocolTask) {
+    source file("src/main/avro")
+    include("**/*.avdl")
+    outputDir = file("build/generated-avro-main-avpr")
+}
+
+tasks.register("generateSchema", GenerateAvroSchemaTask) {
+    dependsOn generateProtocol
+    source file("src/main/avro")
+    source file("build/generated-avro-main-avpr")
+    include("**/*.avpr")
+    outputDir = file("build/generated-main-avro-avsc")
+}
+
+configurations {
+    instrumentedJars {
+        canBeConsumed = true
+        canBeResolved = false
+    }
+}

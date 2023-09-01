@@ -1,0 +1,76 @@
+/*
+ * Comment for licence information.
+ */
+/**
+ * Example Avro protocol.
+ */
+@namespace("com.schema.avro.demo")
+protocol AvroSchemaDemo {
+	record Product {
+		string transactionTime;
+		string productId;
+		string category;
+		string item;
+		string size;
+		double cogs;
+		double price;
+		int inventoryLevel;
+		boolean  containsFruit;
+		boolean containsVeggies;
+		boolean containsNuts;
+		boolean containsCaffeine;
+        int propensityToBuy;
+	}
+
+	record Purchase {
+		string transactionTime;
+		string transactionId;
+		string productId;
+		double price;
+		int quantity;
+		boolean isMember;
+		double memberDiscount;
+		boolean addSupplements;
+		double supplementPrice;
+		double totalPurchase;
+	}
+
+	record Inventory {
+		string eventTime;
+		string productId;
+		int existingLevel;
+		int stockQuantity;
+		int newLevel;
+	}
+
+	record PurchaseEnriched {
+		string transactionTime;
+		string transactionTimestamp;
+		string transactionId;
+		string productId;
+		string productCategory;
+		string productName;
+		string productSize;
+		double productCOGS;
+		double productPrice;
+		boolean containsFruit;
+		boolean containsVeggies;
+		boolean containsNuts;
+		boolean containsCaffeine;
+		double purchasePrice;
+		int purchaseQuantity;
+		boolean isMember;
+		double memberDiscount;
+		boolean addSupplements;
+		double supplementPrice;
+		double totalPurchase;
+	}
+
+	record RunningTotal {
+		string eventTime;
+		string productId;
+		int transactions;
+		int quantities;
+		double sales;
+	}
+}

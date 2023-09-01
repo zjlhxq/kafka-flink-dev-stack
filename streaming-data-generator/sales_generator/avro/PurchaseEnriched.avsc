@@ -1,0 +1,66 @@
+{
+  "type" : "record",
+  "name" : "PurchaseEnriched",
+  "namespace" : "com.siemens.hps",
+  "fields" : [ {
+    "name" : "transactionTime",
+    "type" : "string"
+  }, {
+    "name" : "transactionTimestamp",
+    "type" : "long"
+  }, {
+    "name" : "transactionId",
+    "type" : "string"
+  }, {
+    "name" : "productId",
+    "type" : "string"
+  }, {
+    "name" : "productCategory",
+    "type" : "string"
+  }, {
+    "name" : "productName",
+    "type" : "string"
+  }, {
+    "name" : "productSize",
+    "type" : "string"
+  }, {
+    "name" : "productCOGS",
+    "type" : "double"
+  }, {
+    "name" : "productPrice",
+    "type" : "double"
+  }, {
+    "name" : "containsFruit",
+    "type" : "boolean"
+  }, {
+    "name" : "containsVeggies",
+    "type" : "boolean"
+  }, {
+    "name" : "containsNuts",
+    "type" : "boolean"
+  }, {
+    "name" : "containsCaffeine",
+    "type" : "boolean"
+  }, {
+    "name" : "purchasePrice",
+    "type" : "double"
+  }, {
+    "name" : "purchaseQuantity",
+    "type" : "int"
+  }, {
+    "name" : "isMember",
+    "type" : "boolean"
+  }, {
+    "name" : "memberDiscount",
+    "type" : "double"
+  }, {
+    "name" : "addSupplements",
+    "type" : "boolean"
+  }, {
+    "name" : "supplementPrice",
+    "type" : "double"
+  }, {
+    "name" : "totalPurchase",
+    "type" : "double"
+  } ]
+}

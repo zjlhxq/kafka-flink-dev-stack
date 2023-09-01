@@ -1,0 +1,21 @@
+{
+  "type" : "record",
+  "name" : "Inventory",
+  "namespace" : "com.siemens.hps",
+  "fields" : [ {
+    "name" : "eventTime",
+    "type" : "string"
+  }, {
+    "name" : "productId",
+    "type" : "string"
+  }, {
+    "name" : "existingLevel",
+    "type" : "int"
+  }, {
+    "name" : "stockQuantity",
+    "type" : "int"
+  }, {
+    "name" : "newLevel",
+    "type" : "int"
+  } ]
+}
