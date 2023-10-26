@@ -3,8 +3,8 @@ A mini kafka flink demo stack with avro as the serialization format based on htt
 
 # Getting started with the dev stack
 1. Basic development env setup (Ubuntu guest os, docker engine, git, maven/gradle, ide, java, python3)
-2. Bring up the mini dev stack with docker-compose (docker images may need to be rebuilt to be able to run in ARM64(apple silicon chip))
-   > docker-compoe -f docker/flink-kafka-stack.yml up -d
+2. Bring up the mini dev stack with docker-compose (the stack should work both in x86-64 and ARM64(apple silicon chip))
+   > docker-compose -f docker/flink-kafka-stack.yml up -d
 3. Run the python data generator script to simulate data ingestion
    > cd streaming-data-generator/sales_generator
    > python3 ./producer.py
